@@ -12,17 +12,21 @@ const CrudUI = () => {
       {/* Input Fields */}
       <div className="row mb-3">
         <div className="col-md-6">
+        <label className="form-label">First Name</label>
           <input type="text" className="form-control mb-2" placeholder="Input 1" />
         </div>
         <div className="col-md-6">
+        <label className="form-label">Last Name</label>
           <input type="text" className="form-control mb-2" placeholder="Input 2" />
         </div>
       </div>
       <div className="row mb-3">
         <div className="col-md-6">
+        <label className="form-label">Address</label>
           <input type="text" className="form-control mb-2" placeholder="Input 3" />
         </div>
         <div className="col-md-6">
+        <label className="form-label">Email</label>
           <input type="text" className="form-control mb-2" placeholder="Input 4" />
         </div>
       </div>
