@@ -1,44 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from "axios";
+import { useEffect, useState } from 'react';
 
 const CrudUI = () => {
-  return (
-    <div className="container mt-5">
-      {/* Search Bar */}
-      <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Search..." />
-        <button className="btn btn-primary" type="button">Search</button>
-      </div>
 
-      {/* Input Fields */}
-      <div className="row mb-3">
-        <div className="col-md-6">
-        <label className="form-label">First Name</label>
-          <input type="text" className="form-control mb-2" placeholder="Input 1" />
-        </div>
-        <div className="col-md-6">
-        <label className="form-label">Last Name</label>
-          <input type="text" className="form-control mb-2" placeholder="Input 2" />
-        </div>
-      </div>
-      <div className="row mb-3">
-        <div className="col-md-6">
-        <label className="form-label">Address</label>
-          <input type="text" className="form-control mb-2" placeholder="Input 3" />
-        </div>
-        <div className="col-md-6">
-        <label className="form-label">Email</label>
-          <input type="text" className="form-control mb-2" placeholder="Input 4" />
-        </div>
-      </div>
 
-      {/* Buttons */}
-      <div className="d-flex justify-content-between">
-        <button className="btn btn-success">Save</button>
-        <button className="btn btn-warning">Update</button>
-        <button className="btn btn-danger">Delete</button>
-      </div>
-    </div>
-  );
+const [data,setData] = useState("");
+
+const getData= async()=>{
+  const response = await Axios.get("http://localhost:3000/getData");
+  setData(response.data);
+}
+
+useEffect(()=>{
+  getData()
+},[]);
+
+return(
+  <div>{data}</div>
+)
 };
 
 export default CrudUI;
