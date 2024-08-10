@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
 
@@ -38,32 +39,102 @@ const handleSubmit = async()=>{
 
 
   return (
-    <div>
-      <h1>Submit Form</h1>
-      
-        <div>
-          <label>Name:</label>
+
+    <div className="container mt-5">
+      {/* Search Bar */}
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search..."
+          name="address"
+          value={data.address}
+          onChange={changeEvent}
+          required
+        />
+        <button className="btn btn-primary" type="button" onClick={handleSubmit}>
+          Search
+        </button>
+      </div>
+
+      {/* Input Fields */}
+      <div className="row mb-3">
+        <div className="col-md-6">
+          <label className="form-label">Name</label>
           <input
             type="text"
+            className="form-control mb-2"
+            placeholder="Name"
             name="name"
             value={data.name}
             onChange={changeEvent}
             required
           />
         </div>
-        <div>
-          <label>Address:</label>
+        <div className="col-md-6">
+          <label className="form-label">Address</label>
           <input
             type="text"
+            className="form-control mb-2"
+            placeholder="Address"
             name="address"
             value={data.address}
             onChange={changeEvent}
             required
           />
         </div>
-        <button type="button" onClick={handleSubmit}>Submit</button>
-      
+      </div>
+
+      {/* Buttons */}
+      <div className="d-flex justify-content-between">
+        <button className="btn btn-success" onClick={handleSubmit}>Save</button>
+        <button className="btn btn-warning" onClick={handleSubmit}>Update</button>
+        <button className="btn btn-danger" onClick={handleSubmit}>Delete</button>
+      </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // <div>
+    //   <h1>Submit Form</h1>
+      
+    //     <div>
+    //       <label>Name:</label>
+    //       <input
+    //         type="text"
+    //         name="name"
+    //         value={data.name}
+    //         onChange={changeEvent}
+    //         required
+    //       />
+    //     </div>
+    //     <div>
+    //       <label>Address:</label>
+    //       <input
+    //         type="text"
+            // name="address"
+            // value={data.address}
+            // onChange={changeEvent}
+            // required
+    //       />
+    //     </div>
+    //     <button type="button" onClick={handleSubmit}>Submit</button>
+      
+    // </div>
   );
 }
 
