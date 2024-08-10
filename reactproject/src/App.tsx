@@ -6,11 +6,12 @@ export default function App() {
 
 
 interface Data{
+  studentId: string,
   name: string,
   address: string
 }
 
-const [data,setData] = useState<Data>({name:"",address:""});
+const [data,setData] = useState<Data>({studentId:"",name:"",address:""});
 
 const changeEvent = (e:React.ChangeEvent<HTMLInputElement>)=>{
   const {name,value} = e.target
@@ -21,19 +22,22 @@ const changeEvent = (e:React.ChangeEvent<HTMLInputElement>)=>{
 }
 
 const handleSubmit = async()=>{
-  
-
-
   try{
     const response = await axios.post("http://localhost:3000/api/saveStudent",data);
     console.log(response);
     
   }catch(error){
     console.log(error);
-    
-
   }
-  
+}
+
+const updateStudent = async()=>{
+  try{
+    const response = await axios.put("http://localhost:3000/api/updateStudent", data);
+    console.log(response);
+  }catch(error){
+    console.log(error);
+  }
 }
 
 
@@ -59,6 +63,18 @@ const handleSubmit = async()=>{
 
       {/* Input Fields */}
       <div className="row mb-3">
+      <div className="col-md-6">
+          <label className="form-label">Student ID:</label>
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Id"
+            name="studentId"
+            value={data.studentId}
+            onChange={changeEvent}
+            required
+          />
+        </div>
         <div className="col-md-6">
           <label className="form-label">Name</label>
           <input
@@ -88,26 +104,10 @@ const handleSubmit = async()=>{
       {/* Buttons */}
       <div className="d-flex justify-content-between">
         <button className="btn btn-success" onClick={handleSubmit}>Save</button>
-        <button className="btn btn-warning" onClick={handleSubmit}>Update</button>
+        <button className="btn btn-warning" onClick={updateStudent}>Update</button>
         <button className="btn btn-danger" onClick={handleSubmit}>Delete</button>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     // <div>
     //   <h1>Submit Form</h1>
