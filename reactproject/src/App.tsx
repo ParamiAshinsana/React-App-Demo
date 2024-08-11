@@ -32,10 +32,27 @@ const handleSubmit = async()=>{
 }
 
 const updateStudent = async()=>{
-  try{
-    const response = await axios.put("http://localhost:3000/api/updateStudent", data);
+  // try{
+  //   const response = await axios.put("http://localhost:3000/api/updateStudent", data);
+  //   console.log(response);
+  // }catch(error){
+  //   console.log(error);
+  // }
+  try {
+    // Make sure to include studentId in the URL
+    const response = await axios.put(`http://localhost:3000/api/updateStudent/${data.studentId}`, data);
     console.log(response);
-  }catch(error){
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const deleteStudent = async()=>{
+  try {
+    // Make sure to include studentId in the URL
+    const response = await axios.delete(`http://localhost:3000/api/deleteStudent/${data.studentId}`);
+    console.log(response);
+  } catch (error) {
     console.log(error);
   }
 }
@@ -46,7 +63,7 @@ const updateStudent = async()=>{
 
     <div className="container mt-5">
       {/* Search Bar */}
-      <div className="input-group mb-3">
+      {/* <div className="input-group mb-3">
         <input
           type="text"
           className="form-control"
@@ -59,7 +76,7 @@ const updateStudent = async()=>{
         <button className="btn btn-primary" type="button" onClick={handleSubmit}>
           Search
         </button>
-      </div>
+      </div> */}
 
       {/* Input Fields */}
       <div className="row mb-3">
@@ -105,7 +122,7 @@ const updateStudent = async()=>{
       <div className="d-flex justify-content-between">
         <button className="btn btn-success" onClick={handleSubmit}>Save</button>
         <button className="btn btn-warning" onClick={updateStudent}>Update</button>
-        <button className="btn btn-danger" onClick={handleSubmit}>Delete</button>
+        <button className="btn btn-danger" onClick={deleteStudent}>Delete</button>
       </div>
     </div>
 
