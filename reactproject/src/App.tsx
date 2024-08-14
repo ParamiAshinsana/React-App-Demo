@@ -3,13 +3,12 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
-
-
 interface Data{
   studentId: string,
   name: string,
   address: string
 }
+
 
 const [data,setData] = useState<Data>({studentId:"",name:"",address:""});
 
